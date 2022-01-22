@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
   <p>
 
     The title is: {{ title }}
+
   </p>
+  <input [value]="title">
+  <button>Save</button>
 `,
   styleUrls: ['./input-button-unit.component.css']
 })
@@ -17,16 +20,17 @@ export class InputButtonUnitComponent implements OnInit {
   title: string = 'Hello World';
 
   constructor() {
-    console.log('in constructor');
-    console.log(this.title);
-    this.changeTitle('My First Angular App');
-    console.log(this.title);
+
   }
 
-  ngOnInit():void{
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.title = 'This is not the title you are looking for';
+    }, 3000);
   }
-  changeTitle(newTitle: string) {
-    console.log(newTitle);
-    this.title = newTitle;
-  }
+
+changeTitle(newTitle: string) {
+  console.log(newTitle);
+  this.title = newTitle;
+}
 }
