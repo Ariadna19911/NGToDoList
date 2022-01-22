@@ -10,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
     The title is: {{ title }}
 
   </p>
-  <input [value]="title">
-  <button>Save</button>
+  <input [value]="title"
+       (keyup.enter)="changeTitle($event.target.value)">
+  <button (click)="changeTitle('Button Clicked!')">
+    Save
+  </button>
 `,
   styleUrls: ['./input-button-unit.component.css']
 })
@@ -23,14 +26,10 @@ export class InputButtonUnitComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.title = 'This is not the title you are looking for';
-    }, 3000);
+  ngOnInit(): void{
   }
 
-changeTitle(newTitle: string) {
-  console.log(newTitle);
-  this.title = newTitle;
+  changeTitle(newTitle: string): void {
+    this.title = newTitle;
 }
 }
