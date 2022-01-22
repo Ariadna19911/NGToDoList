@@ -5,14 +5,10 @@ import { Component, OnInit } from '@angular/core';
 
   selector: 'app-input-button-unit',
   template: `
-  <p>
 
-    The title is: {{ title }}
-
-  </p>
-  <input [value]="title"
+  <input #inputElementRef [value]="title"
        (keyup.enter)="changeTitle($event.target.value)">
-  <button (click)="changeTitle('Button Clicked!')">
+  <button (click)="changeTitle(inputElementRef.value)">
     Save
   </button>
 `,
